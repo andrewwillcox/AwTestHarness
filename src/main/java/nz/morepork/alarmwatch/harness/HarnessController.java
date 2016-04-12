@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HarnessController {
+class HarnessController {
     private static final Logger logger = LoggerFactory.getLogger(HarnessController.class);
 
     @RequestMapping(method = RequestMethod.POST, path = "Account/OffLineClient")
