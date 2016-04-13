@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping
 class HarnessController {
     private static final Logger logger = LoggerFactory.getLogger(HarnessController.class);
 
