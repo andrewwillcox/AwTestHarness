@@ -1,3 +1,3 @@
-The OpenShift `jbossews` cartridge documentation can be found at:
+A test harness emulating the alarm watch api
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#tomcat
+https://portal.alarmwatch.co.nz/MoreporkApi/Help
