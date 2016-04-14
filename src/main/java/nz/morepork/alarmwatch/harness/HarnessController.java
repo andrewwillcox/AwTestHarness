@@ -53,7 +53,9 @@ class HarnessController {
         return "sample string 1";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "logs") public String logs() {
+    @RequestMapping(method = RequestMethod.GET, path = "Account/Logs")
+    @ResponseBody
+    public String logs() {
         StringBuilder buffer = new StringBuilder();
         for (Object request : requests) {
             buffer.append(request);
