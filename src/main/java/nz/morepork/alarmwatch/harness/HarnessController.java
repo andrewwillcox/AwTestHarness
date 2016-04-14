@@ -53,14 +53,21 @@ class HarnessController {
         return "sample string 1";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "Account/Logs")
+    @RequestMapping(method = RequestMethod.GET, path = "Logs/View")
     @ResponseBody
-    public String logs() {
+    public String viewLogs() {
         StringBuilder buffer = new StringBuilder();
         for (Object request : requests) {
-            buffer.append(request);
+            buffer.append(request).append("\n\n");
         }
         return buffer.toString();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "Logs/Clear")
+    @ResponseBody
+    public boolean clearLogs() {
+        requests.clear();
+        return true;
     }
 
 }
