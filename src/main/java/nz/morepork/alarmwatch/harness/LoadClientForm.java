@@ -1,6 +1,7 @@
 package nz.morepork.alarmwatch.harness;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.MoreObjects;
 
 import java.util.List;
 
@@ -50,21 +51,21 @@ public class LoadClientForm {
     List<Contact> EmergencyContacts;
 
     @Override public String toString() {
-        return "LoadClientForm{" +
-                "Token='" + Token + '\'' +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", MobileNo='" + MobileNo + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Address='" + Address + '\'' +
-                ", ClientID='" + ClientID + '\'' +
-                ", SecurityQuestion='" + SecurityQuestion + '\'' +
-                ", SecurityAnswer='" + SecurityAnswer + '\'' +
-                ", PhotosVideos='" + PhotosVideos + '\'' +
-                ", AlarmEvents='" + AlarmEvents + '\'' +
-                ", NonAlarmEvents='" + NonAlarmEvents + '\'' +
-                ", EmergencyServices='" + EmergencyServices + '\'' +
-                ", EmergencyContacts=" + EmergencyContacts +
-                '}';
+        return MoreObjects.toStringHelper(this)
+                .add("Token", Token)
+                .add("FirstName", FirstName)
+                .add("LastName", LastName)
+                .add("MobileNo", MobileNo)
+                .add("Email", Email)
+                .add("Address", Address)
+                .add("ClientID", ClientID)
+                .add("SecurityQuestion", SecurityQuestion)
+                .add("SecurityAnswer", SecurityAnswer)
+                .add("PhotosVideos", PhotosVideos)
+                .add("AlarmEvents", AlarmEvents)
+                .add("NonAlarmEvents", NonAlarmEvents)
+                .add("EmergencyServices", EmergencyServices)
+                .add("EmergencyContacts", EmergencyContacts)
+                .toString();
     }
 }

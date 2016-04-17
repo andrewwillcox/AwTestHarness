@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 @Controller
 @RequestMapping
@@ -19,7 +18,7 @@ class HarnessController {
 
     private static final int TO_REMEMBER = 5;
 
-    private final Queue<String> requests = new LinkedList<String>();
+    private final LinkedList<String> requests = new LinkedList<String>();
 
 
     @RequestMapping(method = RequestMethod.POST, path = "Account/OffLineClient")
@@ -31,10 +30,10 @@ class HarnessController {
     }
 
     private void addRequest(final Object form) {
+        requests.add(0,form.toString());
         if (requests.size() > TO_REMEMBER) {
-            requests.poll();
+            requests.removeLast();
         }
-        requests.add(form.toString());
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "Account/LoadClient")
@@ -58,7 +57,7 @@ class HarnessController {
     public String viewLogs() {
         StringBuilder buffer = new StringBuilder();
         for (Object request : requests) {
-            buffer.append(request).append("\n\n");
+            buffer.append(request).append(" \n\n ");
         }
         return buffer.toString();
     }
