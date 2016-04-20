@@ -26,9 +26,7 @@ class HarnessController {
 
 
   @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/OffLineClient",
-                  consumes = MediaType.APPLICATION_JSON_VALUE,
-                  produces = MediaType.TEXT_PLAIN_VALUE)
+                  path = "/Account/OffLineClient")
   @ResponseBody
   public boolean offLineClient(@RequestBody OfflineClientForm form) {
     logger.info("offline client: {}", form);
@@ -44,9 +42,7 @@ class HarnessController {
   }
 
   @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/LoadClient",
-                  consumes = MediaType.APPLICATION_JSON_VALUE,
-                  produces = MediaType.TEXT_PLAIN_VALUE)
+                  path = "/Account/LoadClient")
   @ResponseBody
   public String loadClient(@RequestBody LoadClientForm form) {
     logger.info("load client: {}", form);
@@ -55,9 +51,7 @@ class HarnessController {
   }
 
   @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/UpdateClient",
-                  consumes = MediaType.APPLICATION_JSON_VALUE,
-                  produces = MediaType.TEXT_PLAIN_VALUE)
+                  path = "/Account/UpdateClient")
   @ResponseBody
   public String updateClient(@RequestBody LoadClientForm form) {
     logger.info("update client: {}", form);
