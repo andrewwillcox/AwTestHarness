@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @EnableWebMvc
 @RestController
@@ -25,8 +26,7 @@ class HarnessController {
   private final LinkedList<ClientForm> requests = new LinkedList<ClientForm>();
 
 
-  @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/OffLineClient")
+  @RequestMapping(method = RequestMethod.POST, path = "/Account/OffLineClient")
   @ResponseBody
   public boolean offLineClient(@RequestBody OfflineClientForm form) {
     logger.info("offline client: {}", form);
@@ -34,24 +34,15 @@ class HarnessController {
     return true;
   }
 
-  private void addRequest(final ClientForm form) {
-    requests.add(0, form);
-    if (requests.size() > TO_REMEMBER) {
-      requests.removeLast();
-    }
-  }
-
-  @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/LoadClient")
+  @RequestMapping(method = RequestMethod.POST, path = "/Account/LoadClient")
   @ResponseBody
   public String loadClient(@RequestBody LoadClientForm form) {
     logger.info("load client: {}", form);
     addRequest(form);
-    return "sample string 1";
+    return String.valueOf(ThreadLocalRandom.current().nextInt(1000, 10000));
   }
 
-  @RequestMapping(method = RequestMethod.POST,
-                  path = "/Account/UpdateClient")
+  @RequestMapping(method = RequestMethod.POST, path = "/Account/UpdateClient")
   @ResponseBody
   public String updateClient(@RequestBody LoadClientForm form) {
     logger.info("update client: {}", form);
@@ -70,6 +61,13 @@ class HarnessController {
   public boolean clearLogs() {
     requests.clear();
     return true;
+  }
+
+  private void addRequest(final ClientForm form) {
+    requests.add(0, form);
+    if (requests.size() > TO_REMEMBER) {
+      requests.removeLast();
+    }
   }
 
 }

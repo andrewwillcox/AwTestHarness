@@ -2,6 +2,7 @@ package nz.morepork.alarmwatch.harness;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.MoreObjects;
 
 import java.util.List;
 
@@ -43,4 +44,23 @@ public class LoadClientForm extends ClientForm {
 
   @JsonProperty(value = "EmergencyContacts")
   List<Contact> EmergencyContacts;
+
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("FirstName", FirstName)
+        .add("LastName", LastName)
+        .add("MobileNo", MobileNo)
+        .add("Email", Email)
+        .add("Address", Address)
+        .add("SecurityQuestion", SecurityQuestion)
+        .add("SecurityAnswer", SecurityAnswer)
+        .add("PhotosVideos", PhotosVideos)
+        .add("AlarmEvents", AlarmEvents)
+        .add("NonAlarmEvents", NonAlarmEvents)
+        .add("EmergencyServices", EmergencyServices)
+        .add("EmergencyContacts", EmergencyContacts)
+        .toString();
+  }
 }
