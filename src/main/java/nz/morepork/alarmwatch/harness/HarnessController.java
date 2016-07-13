@@ -23,7 +23,7 @@ class HarnessController {
 
   private static final int TO_REMEMBER = 5;
 
-  private final LinkedList<ClientForm> requests = new LinkedList<ClientForm>();
+  private final LinkedList<ClientForm> requests = new LinkedList<>();
 
 
   @RequestMapping(method = RequestMethod.POST, path = "/Account/OffLineClient")

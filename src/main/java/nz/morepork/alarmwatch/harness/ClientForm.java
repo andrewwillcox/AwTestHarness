@@ -13,7 +13,7 @@ public class ClientForm {
   @JsonProperty(value = "Token", required = true)
   String token;
 
-  @JsonProperty(value = "ClientID", required = true)
+  @JsonProperty(value = "ClientID")
   String clientID;
 
   @Override
