@@ -6,13 +6,17 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @EnableWebMvc
 @RestController
@@ -48,6 +52,24 @@ class HarnessController {
     logger.info("update client: {}", form);
     addRequest(form);
     return "sample string 1";
+  }
+
+  @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewLastRequest", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public ClientForm viewLastRequest() {
+    return requests.getLast();
+  }
+
+  @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewClientRequests", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public List<ClientForm> getAllClientRequests(@RequestParam(value = "clientId") final String clientId ) {
+    List<ClientForm> clientForms = new ArrayList<>();
+    for (ClientForm request : requests) {
+      if (request.clientID.equals(clientId)) {
+        clientForms.add(request);
+      }
+    }
+    return clientForms;
   }
 
   @RequestMapping(method = RequestMethod.GET, path = "/Logs/View", produces = MediaType.APPLICATION_JSON_VALUE)
