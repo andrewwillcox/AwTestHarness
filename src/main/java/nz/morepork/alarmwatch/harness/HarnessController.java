@@ -28,7 +28,7 @@ class HarnessController {
   private static final int TO_REMEMBER = 5;
 
   private final LinkedList<ClientForm> requests = new LinkedList<>();
-  private final Map<String, List<ClientForm>> clientRequests = new LinkedHashMap<>();
+  private final LinkedHashMap<String, List<ClientForm>> clientRequests = new LinkedHashMap<>();
 
 
   @RequestMapping(method = RequestMethod.POST, path = "/Account/OffLineClient")
@@ -87,6 +87,18 @@ class HarnessController {
     if (requests.size() > TO_REMEMBER) {
       requests.removeLast();
     }
+
+    getClientRequestList(clientId).add(form);
+    if (clientRequests.size() > TO_REMEMBER) {
+      clientRequests.remove(clientRequests.entrySet().iterator().next().getKey());
+    }
+  }
+
+  private List<ClientForm> getClientRequestList(String clientId) {
+    if (clientRequests.get(clientId) == null) {
+      clientRequests.put(clientId, new ArrayList<ClientForm>());
+    }
+    return clientRequests.get(clientId);
   }
 
 }
