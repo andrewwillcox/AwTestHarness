@@ -59,7 +59,7 @@ class HarnessController {
   @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewLastRequest", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public ClientForm viewLastRequest() {
-    return (requests.size() > 0) ? requests.getLast() : null;
+    return (requests.size() > 0) ? requests.getFirst() : null;
   }
 
   @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewClientRequests", produces = MediaType.APPLICATION_JSON_VALUE)
