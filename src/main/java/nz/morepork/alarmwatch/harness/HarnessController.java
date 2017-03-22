@@ -62,6 +62,28 @@ class HarnessController {
     return (requests.size() > 0) ? requests.getFirst() : null;
   }
 
+  @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewLastLoadRequest", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public LoadClientForm viewLastLoadRequest() {
+    for (ClientForm clientForm : requests) {
+      if (clientForm instanceof LoadClientForm) {
+        return (LoadClientForm)clientForm;
+      }
+    }
+    return null;
+  }
+
+  @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewLastOfflineRequest", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ResponseBody
+  public OfflineClientForm viewLastOfflineRequest() {
+    for (ClientForm clientForm : requests) {
+      if (clientForm instanceof OfflineClientForm) {
+        return (OfflineClientForm)clientForm;
+      }
+    }
+    return null;
+  }
+
   @RequestMapping(method = RequestMethod.GET, path = "/Logs/ViewClientRequests", produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public List<ClientForm> getAllClientRequests(@RequestParam(value = "clientId") final String clientId ) {

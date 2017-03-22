@@ -6,3 +6,6 @@ http://awtestharness-morepork.rhcloud.com/Logs/View
 
 http://awtestharness-morepork.rhcloud.com/Logs/ViewLastRequest
 
+http://awtestharness-morepork.rhcloud.com/Logs/ViewLastLoadRequest
+
+http://awtestharness-morepork.rhcloud.com/Logs/ViewLastOfflineRequest
