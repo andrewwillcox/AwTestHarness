@@ -33,7 +33,7 @@ public class LoadClientForm extends ClientForm {
   @JsonProperty(value = "PhotosVideos")
   String PhotosVideos;
 
-  @JsonProperty(value = "VideoId")
+  @JsonProperty(value = "VideoID")
   String VideoId;
 
   @JsonProperty(value = "AlarmEvents")
@@ -60,7 +60,7 @@ public class LoadClientForm extends ClientForm {
         .add("SecurityQuestion", SecurityQuestion)
         .add("SecurityAnswer", SecurityAnswer)
         .add("PhotosVideos", PhotosVideos)
-        .add("VideoId", VideoId)
+        .add("VideoID", VideoId)
         .add("AlarmEvents", AlarmEvents)
         .add("NonAlarmEvents", NonAlarmEvents)
         .add("EmergencyServices", EmergencyServices)
